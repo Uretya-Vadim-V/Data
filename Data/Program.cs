@@ -20,6 +20,7 @@ namespace Data
                         tree.Add(Convert.ToInt32(stringData[0]), Convert.ToInt32(stringData[1]), stringData[2]);
                     }
                 }
+
                 tree.BuildTrees();
                 foreach (var item in tree)
                 {

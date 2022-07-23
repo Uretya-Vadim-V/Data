@@ -166,7 +166,7 @@ namespace Data
         {
             int length = -1;
             List<Node<T1, T2, T3>> listR = new();
-            Residue = Residue.OrderBy(x => x.IdLogParent).ThenBy(x => x.Comment).ToList();
+            Residue = Residue.OrderBy(x => x.Comment).ThenBy(x => x.IdLogParent).ToList();
             while (Residue.Count > 0)
             {
                 if (length == Residue.Count)
