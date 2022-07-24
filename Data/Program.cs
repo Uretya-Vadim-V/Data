@@ -10,7 +10,9 @@ namespace Data
             try
             {
                 Tree<int, int, string> tree = new(0);
-                using (StreamReader file = new(@"..\..\..\..\\data.txt"))
+                Console.Write("Введите название файла: ");
+                string data = Console.ReadLine();
+                using (StreamReader file = new($@"{data}.txt"))
                 {
                     string line;
                     string[] stringData = new string[3];
@@ -20,13 +22,13 @@ namespace Data
                         tree.Add(Convert.ToInt32(stringData[0]), Convert.ToInt32(stringData[1]), stringData[2]);
                     }
                 }
-
                 tree.BuildTrees();
                 foreach (var item in tree)
                 {
                     Console.WriteLine(item);
                 }
-
+                Console.Write("Нажмите любую клавишу, чтобы закрыть...");
+                Console.ReadKey();
             }
             catch (FileNotFoundException filEx)
             {
