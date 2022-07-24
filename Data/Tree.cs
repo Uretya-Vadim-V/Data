@@ -166,13 +166,35 @@ namespace Data
         {
             int length = -1;
             List<Node<T1, T2, T3>> listR = new();
+            Node<T1, T2, T3> current;
             Residue = Residue.OrderBy(x => x.IdLog).ThenBy(x => x.Comment).ToList();
             while (Residue.Count > 0)
             {
                 if (length == Residue.Count)
                 {
-                    AddLast(Residue[0]);
-                    Residue.RemoveAt(0);
+                    current = null;
+                    foreach (var item in Residue)
+                    {
+                        foreach (var x in Residue)
+                            if (Equals(item.IdLog, x.IdLogParent))
+                            {
+                                current = item;
+                                break;
+                            }
+                        if (current != null) break;
+                    }
+                    if (current == null)
+                    {
+                        Residue = Residue.OrderBy(x => x.IdLogParent).ThenBy(x => x.Comment).ToList();
+                        AddLast(Residue[0]);
+                        Residue.RemoveAt(0);
+                    }
+                    else
+                    {
+                        Residue = Residue.OrderBy(x => x.IdLog).ThenBy(x => x.Comment).ToList();
+                        AddLast(current);
+                        Residue.Remove(current);
+                    }
                 }
                 length = Residue.Count;
                 listR.AddRange(Residue);
