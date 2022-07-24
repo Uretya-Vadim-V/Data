@@ -12,7 +12,7 @@ namespace Data
                 Tree<int, int, string> tree = new(0);
                 Console.Write("Введите название файла: ");
                 string data = Console.ReadLine();
-                using (StreamReader file = new($@"{data}.txt"))
+                using (StreamReader file = new($@"..\\..\\..\\..\\{data}.txt"))
                 {
                     string line;
                     string[] stringData = new string[3];
