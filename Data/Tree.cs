@@ -19,10 +19,6 @@ namespace Data
         }
         public void Add(T1 idLog, T2 idLogParent, T3 comment)
         {
-            if (idLog == null || idLogParent == null || comment == null)
-            {
-                throw new ArgumentNullException();
-            }
             Node<T1, T2, T3> buffer = null;
             Node<T1, T2, T3> tag = null;
             Node<T1, T2, T3> node = new(idLog, idLogParent, comment);

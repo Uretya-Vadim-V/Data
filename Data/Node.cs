@@ -13,10 +13,7 @@ namespace Data
         public int Level { get; set; }
         public Node(T1 idLog, T2 idLogParent, T3 comment)
         {
-            if (idLog == null || idLogParent == null || comment == null)
-            {
-                throw new ArgumentNullException();
-            }
+
             IdLog = idLog;
             IdLogParent = idLogParent;
             Comment = comment;
